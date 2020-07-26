@@ -1,0 +1,21 @@
+#lang typed/racket
+
+(: prime?
+	(-> Nonnegative-Integer Boolean))
+		
+;(Listof Nonnegative-Integer)))
+
+(define (prime? number) 
+	(cond 
+		[(>= 1 number) #f]
+		[(eq? 2 number) #t]
+		[else (zero? 
+			(length (filter zero? 
+				(map 
+					(lambda(x) (modulo number x))
+					(range 2 (+ (sqrt number) 1) 1)
+				)
+			))
+		)]
+	)
+)

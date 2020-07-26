@@ -1,0 +1,8 @@
+Program Hello;
+
+begin
+        writeln('Hello Darkness my Old Friend');
+        integer a;
+        readln(a);
+
+end.

@@ -1,0 +1,25 @@
+;#4
+(define x 3)
+(define y (box 3))
+(define (f a b)
+  (begin
+    (set! x 2)
+    (set-box! b 1)
+    (set! a (+ a (unbox y)))))
+(f x y)
+
+//#5 (extra credit)
+int m = 1;
+int[] A = [1, 2, 1, 0];
+int f_a(int z)
+{
+    z = 2;
+    return z;
+}
+void f_b(int p, int q)
+{
+    p = f_a(m) * q;
+    q = 3;
+    A[m] = f_a(q);
+}
+f_b(m, A[0]);

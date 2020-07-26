@@ -1,0 +1,11 @@
+There are various "classes" of formal languages. Tradeoffs between power and efficiency.
+
+Formalization: Chomsky hierarchy
+- Regular languages (type 3 in the hierarchy)
+- context-free language (type 2) (lower number = more poert, less efficiency)
+
+Tokenizing uses regular languages
+3 equivalent definitions of regular languages
+- regular expression
+- finite automata
+- regular grammar

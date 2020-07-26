@@ -1,0 +1,32 @@
+;a
+37
+int
+
+;b
+(lambda (x y) (+ x x))
+(-> Number Any Number)
+
+;c
+second
+((All A) (-> (Listof A) A))
+
+;d
+(lambda (x) (lambda (y z) (and x (= y z))))
+
+any -> ((number x number) ->  bool)
+
+1. (= y z): number x number -> bool
+2. (and x (= y z)): bool x any -> bool
+3. (lambda (y z) (and x (= y z))): number x number -> bool 
+4. (lambda (x) (lambda (y z) (and x (= y z)))): any -> bool
+
+;e
+(lambda (a b c d)
+  (cons
+    (cons a b)
+    (cons
+      (lambda (L)
+      	(list (first L) c))
+      (string-append d "pun")
+      )))
+(any x any x any x string) -> (pair of (pair of any) and (pair of ((list of any) -> (list of any)) and string))

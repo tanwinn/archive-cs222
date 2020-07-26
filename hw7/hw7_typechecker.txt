@@ -1,0 +1,14 @@
+Thanh Nguyen
+hw7_typechecker
+
+Type-checker is a recursive function so it first catches all base cases: first checks for function type, then checks for atomic integer or boolean. If the expr is not a list, ouput error. AFter catches all the base cases and base error case, type-checker starts type-checking the function and its arguments. It do so by extracting the function type corresponding to the expr and after checking if the expr has the right number of args and arg type, it returns the type of the output. 
+
+1.
+'(+ x 1)
+'(+ 1 2 3)
+'(not 2)
+'(2 2)
+2. '+
+3. '(not #t)
+4. '(+ 2 1)
+5. '(not (= 2 (+ 2 1)))

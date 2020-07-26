@@ -1,0 +1,61 @@
+;a: Racket-like syntax
+(let ([x 3]
+      [y #t])
+  (let ([L '(1 2 7)]
+        [f (lambda (a b) (= a (- x 2)))])
+    (begin
+      (set! x 19)
+      (and (f (first L) y) y))))
+
+(- x 2): int x int -> int
+(= a (- x 2)): int x int -> bool
+(lambda): int x any -> bool
+(first L): list of int -> int
+(f (first L) y): int x bool -> bool
+
+
+3 int infers x is int. 1st binding is OK.
+#t bool infers y is bool. 2nd binding is ok.
+Different names have different types
+
+'(1 2 7) list of int infers L list of int
+- is a function, as 2 is an int, assume that it takes 2 integer arguments 
+So x is int and - returns an int 
+
+= is a function to compare 2 values, assume that - returns an int, a is an int
+b is Any, and = returns a boolean, so lambda returns boolean
+lambda bool type infers f bool type
+
+x int, 19 int, so set! is typechecks
+
+(first L) function is typechecks because it takes a list as an argument, L is a list of integer. (first L) returns an int
+
+f function takes int and Any as arguments, 
+(first L) gives an int and y is bool, so (f (first L) y) is typechecks
+
+y is bool and f is bool so and function is typechecks as it takes bool arguments, and returns a bool type
+
+
+=================================
+#b: Python-like syntax
+x = 3
+def f1(a, b):
+    if (a == 0):
+        return x + b
+    else:
+        return a + f1(a - 1, b);
+f1(x, x) + f1(x, "x")
+
+3 int infers x int
+f1 takes a, b as input
+(== is a compare value function, it takes two args that have the same type, and since 0 int then a is int). (a==0) is typechecks, returns a bool type
+
++ is a function thata takes two same-type args that can be added together, namely string, char, numbers, etc. x is int so b must be a number. (x + b) returns an int, it is typechecks
+
+The else section uses a recursive call. a is type int, + is a function that takes two args that can be added together, and f1 is number. (a - 1) function takes two int, a and 1 and make a subtraction, the function is typechecks and returns an int. a + f1(a - 1, b) is typechecks as it returns a number.
+
+f1(x,x) inputs x int, since a, b is also number, function call is typescheck. It returns an int
+
+f1(x, "x") is not typechecks as it inputs "x" char instead of b int --> Error
+
+

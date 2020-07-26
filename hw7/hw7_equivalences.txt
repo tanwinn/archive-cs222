@@ -1,0 +1,69 @@
+;Type declarations
+
+;Generic "triple" type constructor
+(define-type (Tripleof A B C) (Pairof A (Pairof B C)))
+
+;An apple has a circumference, a number of calories, and a species
+(define-type Apple (Tripleof Float Float String))
+
+;An orange has a circumference, a number of calories,
+;and a property "is it peeled?"
+(define-type Orange (Tripleof Float Float Boolean))
+
+;A cabbage has a weight, a number of calories,
+;and a string describing where it was grown
+(define-type Cabbage (Tripleof Float Float String))
+
+;A basketball has a circumference and an air pressure
+(define-type Basketball (Pairof Float Float))
+
+;A fruit is either an apple or an orange
+(define-type Fruit (U Apple Orange))
+
+
+;A food is either a fruit or a cabbage
+(define-type Food (U Fruit Cabbage))
+
+;Variable declarations
+(: a Apple)
+(: b Orange)
+(: c Fruit)
+(: d Fruit)
+(: e Cabbage)
+(: f Food)
+(: g Basketball)
+(: h Cabbage)
+
+=============================================
+Name equivalence
+- c,d
+
+Declarative equivalence
+- a,b,c,d,e,f,h
+
+Structural equivalence
+- a,e,h
+- c,d,f
+
+
+a: (triple of f f str)
+
+b: (triple of f f bool)
+
+c: (Union of 
+	(triple of f f str)
+	(triple of f f bool))
+
+d: (Union of 
+	(triple of f f str)
+	(triple of f f bool))
+
+e: (triple of f f str)
+
+f: (Union of 
+	(triple of f f str)
+	(triple of f f bool))
+
+g: (pair of f f)
+
+h: (triple of f f str)
